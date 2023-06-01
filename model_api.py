@@ -75,7 +75,7 @@ def get_symptom_category(data: Symptom):
 
     input_list = [psy1, psy2, psy3, psy4, psy5, psy6, psy7, psy8, psy9, psy10, psy11, psy12, psy13, psy14, psy15, psy16, psy17]
 
-    pred_name = model.predict([input_list])
+    pred_name = model.predict(input_list)
 
 
     return {'prediction': pred_name}
