@@ -22,23 +22,23 @@ app.add_middleware(
 
 
 class Symptom(BaseModel):
-    symptom1 : float
-    symptom2 : float
-    symptom3 : float
-    symptom4 : float
-    symptom5 : float
-    symptom6 : float
-    symptom7 : float
-    symptom8 : float
-    symptom9 : float
-    symptom10 : float
-    symptom11 : float
-    symptom12 : float
-    symptom13 : float
-    symptom14 : float
-    symptom15 : float
-    symptom16 : float
-    symptom17 : float
+    symptom1: int
+    symptom2: int
+    symptom3: int
+    symptom4: int
+    symptom5: int
+    symptom6: int
+    symptom7: int
+    symptom8: int
+    symptom9: int
+    symptom10: int
+    symptom11: int
+    symptom12: int
+    symptom13: int
+    symptom14: int
+    symptom15: int
+    symptom16: int
+    symptom17: int
 
 
 with open("rfc_model.pkl", "rb") as f:
@@ -77,13 +77,14 @@ def get_symptom_category(data: Symptom):
 
     pred_name = model.predict([[symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]]).tolist()[0]
 
+
     return {'prediction': pred_name}
 
 
 @app.get('/predict')
-def get_cat(symptom1 : float, symptom2 : float, symptom3 : float, symptom4 : float, symptom5 : float, symptom6 : float, symptom7 : float, symptom8 : float, symptom9 : float, symptom10 : float, symptom11 : float, symptom12 : float, symptom13 : float, symptom14 : float, symptom15 : float, symptom16 : float, symptom17 : float):
+def get_cat(symptom1: int, symptom2: int, symptom3: int, symptom4: int, symptom5: int, symptom6: int, symptom7: int, symptom8: int, symptom9: int, symptom10: int, symptom11: int, symptom12: int, symptom13: int, symptom14: int, symptom15: int, symptom16: int, symptom17: int):
     input_list = [symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]
-    
+
     pred_name = model.predict([[symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]]).tolist()[0]
 
     return {'prediction': pred_name}
@@ -91,6 +92,3 @@ def get_cat(symptom1 : float, symptom2 : float, symptom3 : float, symptom4 : flo
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
-
-
-
