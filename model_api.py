@@ -22,23 +22,23 @@ app.add_middleware(
 
 
 class Symptom(BaseModel):
-    symptom1 : float
-    symptom2 : float
-    symptom3 : float
-    symptom4 : float
-    symptom5 : float
-    symptom6 : float
-    symptom7 : float
-    symptom8 : float
-    symptom9 : float
-    symptom10 : float
-    symptom11 : float
-    symptom12 : float
-    symptom13 : float
-    symptom14 : float
-    symptom15 : float
-    symptom16 : float
-    symptom17 : float
+    symptom1 : int
+    symptom2 : int
+    symptom3 : int
+    symptom4 : int
+    symptom5 : int
+    symptom6 : int
+    symptom7 : int
+    symptom8 : int
+    symptom9 : int
+    symptom10 : int
+    symptom11 : int
+    symptom12 : int
+    symptom13 : int
+    symptom14 : int
+    symptom15 : int
+    symptom16 : int
+    symptom17 : int
 
 
 with open("rfc_model.pkl", "rb") as f:
