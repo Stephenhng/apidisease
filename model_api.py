@@ -22,23 +22,23 @@ app.add_middleware(
 
 
 class Symptom(BaseModel):
-    symptom1 : int
-    symptom2 : int
-    symptom3 : int
-    symptom4 : int
-    symptom5 : int
-    symptom6 : int
-    symptom7 : int
-    symptom8 : int
-    symptom9 : int
-    symptom10 : int
-    symptom11 : int
-    symptom12 : int
-    symptom13 : int
-    symptom14 : int
-    symptom15 : int
-    symptom16 : int
-    symptom17 : int
+    symptom1 : float
+    symptom2 : float
+    symptom3 : float
+    symptom4 : float
+    symptom5 : float
+    symptom6 : float
+    symptom7 : float
+    symptom8 : float
+    symptom9 : float
+    symptom10 : float
+    symptom11 : float
+    symptom12 : float
+    symptom13 : float
+    symptom14 : float
+    symptom15 : float
+    symptom16 : float
+    symptom17 : float
 
 
 with open("rfc_model.pkl", "rb") as f:
@@ -55,29 +55,36 @@ def get_symptom_category(data: Symptom):
     input = data.json()
     input_dict = json.loads(input)
 
-    psy1 = input_dict['symptom1']
-    psy2 = input_dict['symptom2']
-    psy3 = input_dict['symptom3']
-    psy4 = input_dict['symptom4']
-    psy5 = input_dict['symptom5']
-    psy6 = input_dict['symptom6']
-    psy7 = input_dict['symptom7']
-    psy8 = input_dict['symptom8']
-    psy9 = input_dict['symptom9']
-    psy10 = input_dict['symptom10']
-    psy11 = input_dict['symptom11']
-    psy12 = input_dict['symptom12']
-    psy13 = input_dict['symptom13']
-    psy14 = input_dict['symptom14']
-    psy15 = input_dict['symptom15']
-    psy16 = input_dict['symptom16']
-    psy17 = input_dict['symptom17']
+    symptom1 = input_dict['symptom1']
+    symptom2 = input_dict['symptom2']
+    symptom3 = input_dict['symptom3']
+    symptom4 = input_dict['symptom4']
+    symptom5 = input_dict['symptom5']
+    symptom6 = input_dict['symptom6']
+    symptom7 = input_dict['symptom7']
+    symptom8 = input_dict['symptom8']
+    symptom9 = input_dict['symptom9']
+    symptom10 = input_dict['symptom10']
+    symptom11 = input_dict['symptom11']
+    symptom12 = input_dict['symptom12']
+    symptom13 = input_dict['symptom13']
+    symptom14 = input_dict['symptom14']
+    symptom15 = input_dict['symptom15']
+    symptom16 = input_dict['symptom16']
+    symptom17 = input_dict['symptom17']
 
-    input_list = [psy1, psy2, psy3, psy4, psy5, psy6, psy7, psy8, psy9, psy10, psy11, psy12, psy13, psy14, psy15, psy16, psy17]
+    input_list = [symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]
 
-    pred_name = model.predict(input_list)
+    pred_name = model.predict([input_list])
 
 
+    return {'prediction': pred_name}
+
+
+@app.get('/predict')
+def get_cat(symptom1 : float, symptom2 : float, symptom3 : float, symptom4 : float, symptom5 : float, symptom6 : float, symptom7 : float, symptom8 : float, symptom9 : float, symptom10 : float, symptom11 : float, symptom12 : float, symptom13 : float, symptom14 : float, symptom15 : float, symptom16 : float, symptom17 : float):
+    input_list = [symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]
+    pred_name = model.predict([input_list])
     return {'prediction': pred_name}
 
 
