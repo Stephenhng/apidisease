@@ -75,8 +75,7 @@ def get_symptom_category(data: Symptom):
 
     input_list = [symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]
 
-    pred_name = model.predict(input_list)
-
+    pred_name = model.predict([[symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]]).tolist()[0]
 
     return {'prediction': pred_name}
 
@@ -84,7 +83,9 @@ def get_symptom_category(data: Symptom):
 @app.get('/predict')
 def get_cat(symptom1 : float, symptom2 : float, symptom3 : float, symptom4 : float, symptom5 : float, symptom6 : float, symptom7 : float, symptom8 : float, symptom9 : float, symptom10 : float, symptom11 : float, symptom12 : float, symptom13 : float, symptom14 : float, symptom15 : float, symptom16 : float, symptom17 : float):
     input_list = [symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]
-    pred_name = model.predict(input_list)
+    
+    pred_name = model.predict([[symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]]).tolist()[0]
+
     return {'prediction': pred_name}
 
 
