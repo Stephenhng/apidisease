@@ -125,11 +125,10 @@ def get_cat(symptom1: int, symptom2: int, symptom3: int, symptom4: int, symptom5
     pred_name = model.predict([[symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, symptom11, symptom12, symptom13, symptom14, symptom15, symptom16, symptom17]]).tolist()[0]
 
     rfc_result = model2.score(x_test, y_test)
-    return {'prediction': pred_name + ", Accuracy for this model: " + rfc_result*100}
+    accuracy_str = str(rfc_result * 100)
+    result_string = pred_name + ", Accuracy for this model: " + accuracy_str
+    return {'prediction': result_string}
 
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
-
-
-
